@@ -7,6 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF09E05B2196881100271171 /* DirectPassRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF09E05A2196881100271171 /* DirectPassRenderer.m */; };
+		FF09E05C2196881100271171 /* DirectPassRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF09E05A2196881100271171 /* DirectPassRenderer.m */; };
+		FF0ADC1B21951B5E0016074F /* AVAudioSession+RouteUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC1A21951B5E0016074F /* AVAudioSession+RouteUtils.m */; };
+		FF0ADC1C21951B5E0016074F /* AVAudioSession+RouteUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC1A21951B5E0016074F /* AVAudioSession+RouteUtils.m */; };
+		FF0ADC1F21951C230016074F /* ELAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC1E21951C230016074F /* ELAudioSession.m */; };
+		FF0ADC2021951C230016074F /* ELAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC1E21951C230016074F /* ELAudioSession.m */; };
+		FF0ADC2321951C500016074F /* AudioOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC2221951C500016074F /* AudioOutput.m */; };
+		FF0ADC2421951C500016074F /* AudioOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC2221951C500016074F /* AudioOutput.m */; };
+		FF0ADC2721952B090016074F /* VideoOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC2621952B090016074F /* VideoOutput.m */; };
+		FF0ADC2821952B090016074F /* VideoOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC2621952B090016074F /* VideoOutput.m */; };
+		FF0ADC2C21952F9C0016074F /* BaseEffectFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC2B21952F9C0016074F /* BaseEffectFilter.m */; };
+		FF0ADC2D21952F9C0016074F /* BaseEffectFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0ADC2B21952F9C0016074F /* BaseEffectFilter.m */; };
+		FF661581219922700068EB11 /* YUVFrameCopier.m in Sources */ = {isa = PBXBuildFile; fileRef = FF661580219922700068EB11 /* YUVFrameCopier.m */; };
+		FF661582219922700068EB11 /* YUVFrameCopier.m in Sources */ = {isa = PBXBuildFile; fileRef = FF661580219922700068EB11 /* YUVFrameCopier.m */; };
+		FF661585219924650068EB11 /* ContrastEnhancerFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF661584219924650068EB11 /* ContrastEnhancerFilter.m */; };
+		FF661586219924650068EB11 /* ContrastEnhancerFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF661584219924650068EB11 /* ContrastEnhancerFilter.m */; };
+		FF66158A219965310068EB11 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF661589219965310068EB11 /* CommonUtil.m */; };
+		FF66158B219965310068EB11 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FF661589219965310068EB11 /* CommonUtil.m */; };
+		FF66158E219966900068EB11 /* AVSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66158D219966900068EB11 /* AVSynchronizer.m */; };
+		FF66158F219966900068EB11 /* AVSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF66158D219966900068EB11 /* AVSynchronizer.m */; };
+		FF6CD9C6219A5C810089A198 /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9C5219A5C810089A198 /* VideoPlayerViewController.m */; };
+		FF6CD9C7219A5C810089A198 /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9C5219A5C810089A198 /* VideoPlayerViewController.m */; };
+		FF6CD9CA219A7AF80089A198 /* ELVideoViewPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9C9219A7AF80089A198 /* ELVideoViewPlayerController.m */; };
+		FF6CD9CB219A7AF80089A198 /* ELVideoViewPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9C9219A7AF80089A198 /* ELVideoViewPlayerController.m */; };
+		FF6CD9CE219A7B1A0089A198 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9CD219A7B1A0089A198 /* LoadingView.m */; };
+		FF6CD9CF219A7B1A0089A198 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9CD219A7B1A0089A198 /* LoadingView.m */; };
 		FF7F0434218D3A0D000BFA74 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F0433218D3A0D000BFA74 /* AppDelegate.m */; };
 		FF7F0437218D3A0D000BFA74 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F0436218D3A0D000BFA74 /* ViewController.m */; };
 		FF7F043A218D3A0D000BFA74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7F0438218D3A0D000BFA74 /* Main.storyboard */; };
@@ -54,6 +80,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF09E0592196881100271171 /* DirectPassRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DirectPassRenderer.h; sourceTree = "<group>"; };
+		FF09E05A2196881100271171 /* DirectPassRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DirectPassRenderer.m; sourceTree = "<group>"; };
+		FF0ADC1921951B5E0016074F /* AVAudioSession+RouteUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVAudioSession+RouteUtils.h"; sourceTree = "<group>"; };
+		FF0ADC1A21951B5E0016074F /* AVAudioSession+RouteUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVAudioSession+RouteUtils.m"; sourceTree = "<group>"; };
+		FF0ADC1D21951C230016074F /* ELAudioSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELAudioSession.h; sourceTree = "<group>"; };
+		FF0ADC1E21951C230016074F /* ELAudioSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELAudioSession.m; sourceTree = "<group>"; };
+		FF0ADC2121951C500016074F /* AudioOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioOutput.h; sourceTree = "<group>"; };
+		FF0ADC2221951C500016074F /* AudioOutput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioOutput.m; sourceTree = "<group>"; };
+		FF0ADC2521952B090016074F /* VideoOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoOutput.h; sourceTree = "<group>"; };
+		FF0ADC2621952B090016074F /* VideoOutput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoOutput.m; sourceTree = "<group>"; };
+		FF0ADC2A21952F9C0016074F /* BaseEffectFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseEffectFilter.h; sourceTree = "<group>"; };
+		FF0ADC2B21952F9C0016074F /* BaseEffectFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseEffectFilter.m; sourceTree = "<group>"; };
+		FF66157F219922700068EB11 /* YUVFrameCopier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YUVFrameCopier.h; sourceTree = "<group>"; };
+		FF661580219922700068EB11 /* YUVFrameCopier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YUVFrameCopier.m; sourceTree = "<group>"; };
+		FF661583219924650068EB11 /* ContrastEnhancerFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContrastEnhancerFilter.h; sourceTree = "<group>"; };
+		FF661584219924650068EB11 /* ContrastEnhancerFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContrastEnhancerFilter.m; sourceTree = "<group>"; };
+		FF661588219965310068EB11 /* CommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
+		FF661589219965310068EB11 /* CommonUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
+		FF66158C219966900068EB11 /* AVSynchronizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVSynchronizer.h; sourceTree = "<group>"; };
+		FF66158D219966900068EB11 /* AVSynchronizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVSynchronizer.m; sourceTree = "<group>"; };
+		FF6CD9C4219A5C810089A198 /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoPlayerViewController.h; sourceTree = "<group>"; };
+		FF6CD9C5219A5C810089A198 /* VideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerViewController.m; sourceTree = "<group>"; };
+		FF6CD9C8219A7AF80089A198 /* ELVideoViewPlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELVideoViewPlayerController.h; sourceTree = "<group>"; };
+		FF6CD9C9219A7AF80089A198 /* ELVideoViewPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELVideoViewPlayerController.m; sourceTree = "<group>"; };
+		FF6CD9CC219A7B1A0089A198 /* LoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		FF6CD9CD219A7B1A0089A198 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		FF7F042F218D3A0D000BFA74 /* videoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = videoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7F0432218D3A0D000BFA74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF7F0433218D3A0D000BFA74 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -240,9 +292,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF09E057219687B800271171 /* Copier */ = {
+			isa = PBXGroup;
+			children = (
+				FF66157F219922700068EB11 /* YUVFrameCopier.h */,
+				FF661580219922700068EB11 /* YUVFrameCopier.m */,
+			);
+			path = Copier;
+			sourceTree = "<group>";
+		};
+		FF09E058219687C500271171 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				FF661583219924650068EB11 /* ContrastEnhancerFilter.h */,
+				FF661584219924650068EB11 /* ContrastEnhancerFilter.m */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		FF0ADC2921952F890016074F /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				FF09E058219687C500271171 /* Filter */,
+				FF09E057219687B800271171 /* Copier */,
+				FF0ADC2A21952F9C0016074F /* BaseEffectFilter.h */,
+				FF0ADC2B21952F9C0016074F /* BaseEffectFilter.m */,
+				FF09E0592196881100271171 /* DirectPassRenderer.h */,
+				FF09E05A2196881100271171 /* DirectPassRenderer.m */,
+			);
+			path = Render;
+			sourceTree = "<group>";
+		};
 		FF430A5F2194549C0026BACF /* AudioOutput */ = {
 			isa = PBXGroup;
 			children = (
+				FF0ADC1921951B5E0016074F /* AVAudioSession+RouteUtils.h */,
+				FF0ADC1A21951B5E0016074F /* AVAudioSession+RouteUtils.m */,
+				FF0ADC1D21951C230016074F /* ELAudioSession.h */,
+				FF0ADC1E21951C230016074F /* ELAudioSession.m */,
+				FF0ADC2121951C500016074F /* AudioOutput.h */,
+				FF0ADC2221951C500016074F /* AudioOutput.m */,
 			);
 			path = AudioOutput;
 			sourceTree = "<group>";
@@ -250,6 +339,8 @@
 		FF430A60219454A90026BACF /* VideoOutput */ = {
 			isa = PBXGroup;
 			children = (
+				FF0ADC2521952B090016074F /* VideoOutput.h */,
+				FF0ADC2621952B090016074F /* VideoOutput.m */,
 			);
 			path = VideoOutput;
 			sourceTree = "<group>";
@@ -257,8 +348,32 @@
 		FF430A61219454BE0026BACF /* AVSynchronizer */ = {
 			isa = PBXGroup;
 			children = (
+				FF66158C219966900068EB11 /* AVSynchronizer.h */,
+				FF66158D219966900068EB11 /* AVSynchronizer.m */,
 			);
 			path = AVSynchronizer;
+			sourceTree = "<group>";
+		};
+		FF6615872199651F0068EB11 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FF661588219965310068EB11 /* CommonUtil.h */,
+				FF661589219965310068EB11 /* CommonUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FF6CD9C3219A5C620089A198 /* PlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				FF6CD9C4219A5C810089A198 /* VideoPlayerViewController.h */,
+				FF6CD9C5219A5C810089A198 /* VideoPlayerViewController.m */,
+				FF6CD9C8219A7AF80089A198 /* ELVideoViewPlayerController.h */,
+				FF6CD9C9219A7AF80089A198 /* ELVideoViewPlayerController.m */,
+				FF6CD9CC219A7B1A0089A198 /* LoadingView.h */,
+				FF6CD9CD219A7B1A0089A198 /* LoadingView.m */,
+			);
+			path = PlayerView;
 			sourceTree = "<group>";
 		};
 		FF7F0426218D3A0D000BFA74 = {
@@ -283,6 +398,8 @@
 		FF7F0431218D3A0D000BFA74 /* videoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				FF6CD9C3219A5C620089A198 /* PlayerView */,
+				FF6615872199651F0068EB11 /* Utils */,
 				FF430A61219454BE0026BACF /* AVSynchronizer */,
 				FF430A60219454A90026BACF /* VideoOutput */,
 				FF430A5F2194549C0026BACF /* AudioOutput */,
@@ -535,6 +652,7 @@
 		FF7F04FB218D4642000BFA74 /* Decoder */ = {
 			isa = PBXGroup;
 			children = (
+				FF0ADC2921952F890016074F /* Render */,
 				FFB932FE218FDAB700CD2100 /* VideoDecoder.h */,
 				FFB932FF218FDAB700CD2100 /* VideoDecoder.m */,
 			);
@@ -643,10 +761,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6CD9C6219A5C810089A198 /* VideoPlayerViewController.m in Sources */,
+				FF6CD9CE219A7B1A0089A198 /* LoadingView.m in Sources */,
+				FF0ADC2721952B090016074F /* VideoOutput.m in Sources */,
+				FF0ADC2C21952F9C0016074F /* BaseEffectFilter.m in Sources */,
+				FF0ADC2321951C500016074F /* AudioOutput.m in Sources */,
+				FF0ADC1F21951C230016074F /* ELAudioSession.m in Sources */,
+				FF66158A219965310068EB11 /* CommonUtil.m in Sources */,
 				FF7F0437218D3A0D000BFA74 /* ViewController.m in Sources */,
+				FF66158E219966900068EB11 /* AVSynchronizer.m in Sources */,
 				FF7F0442218D3A0E000BFA74 /* main.m in Sources */,
+				FF661581219922700068EB11 /* YUVFrameCopier.m in Sources */,
+				FF0ADC1B21951B5E0016074F /* AVAudioSession+RouteUtils.m in Sources */,
 				FFB93300218FDAB700CD2100 /* VideoDecoder.m in Sources */,
+				FF6CD9CA219A7AF80089A198 /* ELVideoViewPlayerController.m in Sources */,
+				FF09E05B2196881100271171 /* DirectPassRenderer.m in Sources */,
 				FF7F0434218D3A0D000BFA74 /* AppDelegate.m in Sources */,
+				FF661585219924650068EB11 /* ContrastEnhancerFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +785,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF66158F219966900068EB11 /* AVSynchronizer.m in Sources */,
+				FF6CD9CF219A7B1A0089A198 /* LoadingView.m in Sources */,
+				FF09E05C2196881100271171 /* DirectPassRenderer.m in Sources */,
+				FF0ADC2821952B090016074F /* VideoOutput.m in Sources */,
+				FF6CD9C7219A5C810089A198 /* VideoPlayerViewController.m in Sources */,
+				FF0ADC1C21951B5E0016074F /* AVAudioSession+RouteUtils.m in Sources */,
 				FFB93301218FDAB700CD2100 /* VideoDecoder.m in Sources */,
+				FF661582219922700068EB11 /* YUVFrameCopier.m in Sources */,
+				FF0ADC2D21952F9C0016074F /* BaseEffectFilter.m in Sources */,
+				FF66158B219965310068EB11 /* CommonUtil.m in Sources */,
+				FF0ADC2021951C230016074F /* ELAudioSession.m in Sources */,
+				FF661586219924650068EB11 /* ContrastEnhancerFilter.m in Sources */,
+				FF0ADC2421951C500016074F /* AudioOutput.m in Sources */,
+				FF6CD9CB219A7AF80089A198 /* ELVideoViewPlayerController.m in Sources */,
 				FF7F044C218D3A0E000BFA74 /* videoPlayerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
