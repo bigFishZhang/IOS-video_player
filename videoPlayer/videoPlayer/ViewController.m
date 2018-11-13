@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-
 #import "CommonUtil.h"
 #import "ELVideoViewPlayerController.h"
 
 NSString * const MIN_BUFFERED_DURATION = @"Min Buffered Duration";
 NSString * const MAX_BUFFERED_DURATION = @"Max Buffered Duration";
+
 @interface ViewController ()
 {
     NSMutableDictionary*            _requestHeader;
@@ -53,9 +53,8 @@ NSString * const MAX_BUFFERED_DURATION = @"Max Buffered Duration";
 }
 - (IBAction)forwardToPlayer:(id)sender {
     NSLog(@"forward local player page...");
-    NSString* videoFilePath = [CommonUtil bundlePath:@"test.flv"];
-    //    videoFilePath = @"http://wspull01.live.changbalive.com/easylive/1709828.flv";
-//    videoFilePath = [CommonUtil bundlePath:@"test.flv"];
+    NSString* videoFilePath = [CommonUtil bundlePath:@"recording.flv"];
+    videoFilePath = [CommonUtil bundlePath:@"test.flv"];
 //    BOOL usingHWCodec = YES;
     ELVideoViewPlayerController *vc = [ELVideoViewPlayerController viewControllerWithContentPath:videoFilePath contentFrame:self.view.bounds parameters:_requestHeader];
     [[self navigationController] pushViewController:vc animated:YES];
@@ -66,6 +65,7 @@ NSString * const MAX_BUFFERED_DURATION = @"Max Buffered Duration";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 @end

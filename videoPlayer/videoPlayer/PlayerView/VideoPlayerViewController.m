@@ -8,15 +8,14 @@
 
 #import "VideoPlayerViewController.h"
 
-@interface VideoPlayerViewController () <FillDataDelegate>
-{
-    VideoOutput                                     *_videoOutput;
-    AudioOutput                                     *_audioOutput;
-    NSDictionary                                    *_parameters;
+@interface VideoPlayerViewController () <FillDataDelegate> {
+    VideoOutput*                                    _videoOutput;
+    AudioOutput*                                    _audioOutput;
+    NSDictionary*                                   _parameters;
     CGRect                                          _contentFrame;
     
     BOOL                                            _isPlaying;
-    EAGLSharegroup                                  *_shareGroup;
+    EAGLSharegroup *                                _shareGroup;
 }
 
 @end
@@ -47,15 +46,13 @@
                                       outputEAGLContextShareGroup:sharegroup];
 }
 
-
-- (void)restart
+- (void) restart
 {
-    UIView *parentView = [self.view superview];
+    UIView* parentView = [self.view superview];
     [self.view removeFromSuperview];
     [self stop];
     [self start];
     [parentView addSubview:self.view];
-
 }
 
 - (instancetype) initWithContentPath:(NSString *)path
@@ -68,7 +65,6 @@
                           parameters:parameters
          outputEAGLContextShareGroup:nil];
 }
-
 
 - (instancetype) initWithContentPath:(NSString *)path
                         contentFrame:(CGRect)frame
@@ -88,58 +84,50 @@
     return self;
 }
 
-
-- (void)start
+- (void) start
 {
     _synchronizer = [[AVSynchronizer alloc] initWithPlayerStateDelegate:_playerStateDelegate];
     __weak VideoPlayerViewController *weakSelf = self;
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0) , ^{
+    BOOL isIOS8OrUpper = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0);
+    dispatch_async(dispatch_get_global_queue(isIOS8OrUpper ? QOS_CLASS_USER_INTERACTIVE:DISPATCH_QUEUE_PRIORITY_HIGH, 0) , ^{
         __strong VideoPlayerViewController *strongSelf = weakSelf;
         if (strongSelf) {
             NSError *error = nil;
             OpenState state = OPEN_FAILED;
-            if([strongSelf->_parameters count] > 0){
-                state = [strongSelf->_synchronizer openFile:strongSelf->_videoFilePath parameters:strongSelf->_parameters error:&error];
+            if([_parameters count] > 0){
+                state = [strongSelf->_synchronizer openFile:_videoFilePath parameters:_parameters error:&error];
             } else {
-                state = [strongSelf->_synchronizer openFile:strongSelf->_videoFilePath error:&error];
+                state = [strongSelf->_synchronizer openFile:_videoFilePath error:&error];
             }
             if(OPEN_SUCCESS == state){
                 //启动AudioOutput与VideoOutput
-                strongSelf->_videoOutput = [strongSelf createVideoOutputInstance];
-               strongSelf-> _videoOutput.contentMode = UIViewContentModeScaleAspectFill;
-                strongSelf->_videoOutput.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
+                _videoOutput = [strongSelf createVideoOutputInstance];
+                _videoOutput.contentMode = UIViewContentModeScaleAspectFill;
+                _videoOutput.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.view.backgroundColor = [UIColor clearColor];
-                    [self.view insertSubview:strongSelf->_videoOutput atIndex:0];
+                    [self.view insertSubview:_videoOutput atIndex:0];
                 });
-                NSInteger audioChannels = [strongSelf->_synchronizer getAudioChannels];
-                NSInteger audioSampleRate = [strongSelf->_synchronizer getAudioSampleRate];
+                NSInteger audioChannels = [_synchronizer getAudioChannels];
+                NSInteger audioSampleRate = [_synchronizer getAudioSampleRate];
                 NSInteger bytesPerSample = 2;
-//                strongSelf->_audioOutput = [[AudioOutput alloc] initWithChannels:audioChannels sampleRate:audioSampleRate bytesPerSample:bytesPerSample filleDataDelegate:self];
-                strongSelf->_audioOutput = [[AudioOutput alloc] initWithChannels:audioChannels
-                                                                      sampleRate:audioSampleRate bytesPerSample:bytesPerSample fillDataDelegate:self];
+                _audioOutput = [[AudioOutput alloc] initWithChannels:audioChannels sampleRate:audioSampleRate bytesPerSample:bytesPerSample filleDataDelegate:self];
+                [_audioOutput play];
+                _isPlaying = YES;
                 
-                
-                [strongSelf->_audioOutput play];
-                strongSelf->_isPlaying = YES;
-                
-                if(strongSelf->_playerStateDelegate && [strongSelf->_playerStateDelegate respondsToSelector:@selector(openSucceed)]){
-                    [strongSelf->_playerStateDelegate openSucceed];
+                if(_playerStateDelegate && [_playerStateDelegate respondsToSelector:@selector(openSucceed)]){
+                    [_playerStateDelegate openSucceed];
                 }
             } else if(OPEN_FAILED == state){
-                if(strongSelf->_playerStateDelegate && [strongSelf->_playerStateDelegate respondsToSelector:@selector(connectFailed)]){
-                    [strongSelf->_playerStateDelegate connectFailed];
+                if(_playerStateDelegate && [_playerStateDelegate respondsToSelector:@selector(connectFailed)]){
+                    [_playerStateDelegate connectFailed];
                 }
             }
         }
     });
-    
-    
-    
-    
 }
 
-- (VideoOutput *)createVideoOutputInstance
+- (VideoOutput*) createVideoOutputInstance;
 {
     CGRect bounds = self.view.bounds;
     NSInteger textureWidth = [_synchronizer getVideoFrameWidth];
@@ -150,52 +138,46 @@
                                    shareGroup:_shareGroup];
 }
 
-- (VideoOutput *)getVideoOutputInstance
+- (VideoOutput*) getVideoOutputInstance;
 {
-    
     return _videoOutput;
 }
 
-- (void)loadView
+- (void) loadView
 {
     self.view = [[UIView alloc] initWithFrame:_contentFrame];
     self.view.backgroundColor = [UIColor clearColor];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void) viewWillDisappear:(BOOL)animated;
 {
     [super viewWillDisappear:animated];
+    //    [self stop];
 }
 
-
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (void)play
+- (void)play;
 {
     if (_isPlaying)
-    {
         return;
-    }
     if(_audioOutput){
         [_audioOutput play];
     }
 }
 
-- (void)pause
+- (void)pause;
 {
     if (!_isPlaying)
-    {
         return;
-    }
     if(_audioOutput){
         [_audioOutput stop];
     }
 }
 
-- (void)stop
+- (void)stop;
 {
     if(_audioOutput){
         [_audioOutput stop];
@@ -216,7 +198,7 @@
     }
 }
 
-- (BOOL)isPlaying
+- (BOOL) isPlaying
 {
     return _isPlaying;
 }
@@ -233,8 +215,7 @@
     return image;
 }
 
-
-- (NSInteger)fillAudioData:(SInt16*) sampleBuffer numFrames:(NSInteger)frameNum numChannels:(NSInteger)channels;
+- (NSInteger) fillAudioData:(SInt16*) sampleBuffer numFrames:(NSInteger)frameNum numChannels:(NSInteger)channels;
 {
     if(_synchronizer && ![_synchronizer isPlayCompleted]){
         [_synchronizer audioCallbackFillData:sampleBuffer numFrames:(UInt32)frameNum numChannels:(UInt32)channels];
@@ -248,10 +229,10 @@
     return 1;
 }
 
-- (void)dealloc
+- (void) dealloc
 {
     NSLog(@"VideoPlayerViewController dealloc...");
 }
 
-
 @end
+

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "VideoDecoder.h"
 
@@ -17,7 +16,6 @@
 extern NSString * const kMIN_BUFFERED_DURATION;
 extern NSString * const kMAX_BUFFERED_DURATION;
 
-
 typedef enum OpenState{
     OPEN_SUCCESS,
     OPEN_FAILED,
@@ -26,19 +24,19 @@ typedef enum OpenState{
 
 @protocol PlayerStateDelegate <NSObject>
 
-- (void)openSucceed;
+- (void) openSucceed;
 
-- (void)connectFailed;
+- (void) connectFailed;
 
-- (void)hideLoading;
+- (void) hideLoading;
 
-- (void)showLoading;
+- (void) showLoading;
 
-- (void)onCompletion;
+- (void) onCompletion;
 
-- (void)buriedPointCallback:(BuriedPoint*) buriedPoint;
+- (void) buriedPointCallback:(BuriedPoint*) buriedPoint;
 
-- (void)restart;
+- (void) restart;
 
 @end
 

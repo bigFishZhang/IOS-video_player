@@ -17,11 +17,9 @@
 
 @protocol ImageFilterInput <NSObject>
 
-- (void)renderWithWidth:(NSInteger)width
-                  height:(NSInteger)height
-                position:(float)position;
+- (void) renderWithWidth:(NSInteger) width height:(NSInteger) height position:(float)position;
 
-- (void)setInputTexture:(GLint)textureId;
+- (void) setInputTexture:(GLint) textureId;
 
 @end
 
@@ -52,7 +50,7 @@ static inline BOOL validateProgram(GLuint prog)
     return YES;
 }
 
-static inline GLuint compileShader(GLenum type,NSString *shaderString)
+static inline GLuint compileShader(GLenum type, NSString *shaderString)
 {
     GLint status;
     const GLchar *sources = (GLchar *)shaderString.UTF8String;
@@ -88,21 +86,16 @@ static inline GLuint compileShader(GLenum type,NSString *shaderString)
     return shader;
 }
 
-static inline void mat4f_LoadOrtho(float left,
-                                   float right,
-                                   float bottom,
-                                   float top,
-                                   float near,
-                                   float far,
-                                   float* mout)
+
+static inline void mat4f_LoadOrtho(float left, float right, float bottom, float top, float near, float far, float* mout)
 {
     float r_l = right - left;
     float t_b = top - bottom;
     float f_n = far - near;
-    float tx  = - (right + left) / (right - left);
-    float ty  = - (top + bottom) / (top - bottom);
-    float tz  = - (far +   near) / (far -   near);
-
+    float tx = - (right + left) / (right - left);
+    float ty = - (top + bottom) / (top - bottom);
+    float tz = - (far + near) / (far - near);
+    
     mout[0] = 2.0f / r_l;
     mout[1] = 0.0f;
     mout[2] = 0.0f;
@@ -122,7 +115,6 @@ static inline void mat4f_LoadOrtho(float left,
     mout[13] = ty;
     mout[14] = tz;
     mout[15] = 1.0f;
-    
 }
 
 @interface BaseEffectFilter : NSObject
@@ -136,15 +128,16 @@ static inline void mat4f_LoadOrtho(float left,
     
 }
 
-- (BOOL)prepareRender:(NSInteger)frameWidth height:(NSInteger)frameHeight;
+- (BOOL) prepareRender:(NSInteger) frameWidth height:(NSInteger) frameHeight;
 
-- (void)renderWithWidth:(NSInteger)width height:(NSInteger)height position:(float)position;
-- (BOOL)buildProgram:(NSString*)vertexShader fragmentShader:(NSString*) fragmentShader;
+- (void) renderWithWidth:(NSInteger) width height:(NSInteger) height position:(float)position;
 
-- (void)setInputTexture:(GLint)textureId;
-- (void)releaseRender;
-- (GLint)outputTextureID;
+- (BOOL) buildProgram:(NSString*) vertexShader fragmentShader:(NSString*) fragmentShader;
+
+- (void) setInputTexture:(GLint) textureId;
+
+- (void) releaseRender;
+
+- (GLint) outputTextureID;
 
 @end
-
-

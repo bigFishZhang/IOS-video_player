@@ -6,10 +6,11 @@
 //  Copyright © 2018 bigfish. All rights reserved.
 //
 
+
 #import "AVSynchronizer.h"
 #import "VideoDecoder.h"
+#import <UIKit/UIDevice.h>
 #import <pthread.h>
-
 
 #define LOCAL_MIN_BUFFERED_DURATION                     0.5
 #define LOCAL_MAX_BUFFERED_DURATION                     1.0
@@ -21,19 +22,19 @@
 NSString * const kMIN_BUFFERED_DURATION = @"Min_Buffered_Duration";
 NSString * const kMAX_BUFFERED_DURATION = @"Max_Buffered_Duration";
 
-@interface AVSynchronizer(){
+@interface AVSynchronizer () {
     
-    VideoDecoder                                        *_decoder;
+    VideoDecoder*                                       _decoder;
     BOOL                                                isOnDecoding;
     BOOL                                                isInitializeDecodeThread;
     BOOL                                                isDestroyed;
     
     BOOL                                                isFirstScreen;
-    /** The control variable of the decode  first buffer **/
+    /** 解码第一段buffer的控制变量 **/
     pthread_mutex_t                                     decodeFirstBufferLock;
     pthread_cond_t                                      decodeFirstBufferCondition;
     pthread_t                                           decodeFirstBufferThread;
-    /** Whether the first section buffer is being decoded **/
+    /** 是否正在解码第一段buffer **/
     BOOL                                                isDecodingFirstBuffer;
     
     pthread_mutex_t                                     videoDecoderLock;
@@ -41,16 +42,16 @@ NSString * const kMAX_BUFFERED_DURATION = @"Max_Buffered_Duration";
     pthread_t                                           videoDecoderThread;
     
     //    dispatch_queue_t                                    _dispatchQueue;
-    NSMutableArray                                      *_videoFrames;
-    NSMutableArray                                      *_audioFrames;
+    NSMutableArray*                                     _videoFrames;
+    NSMutableArray*                                     _audioFrames;
     
-    /** The global variable caches the data when the external world needs the audio data and video data **/
-    NSData                                              *_currentAudioFrame;
+    /** 分别是当外界需要音频数据和视频数据的时候, 全局变量缓存数据 **/
+    NSData*                                             _currentAudioFrame;
     NSUInteger                                          _currentAudioFramePos;
     CGFloat                                             _audioPosition;
-    VideoFrame                                          *_currentVideoFrame;
+    VideoFrame*                                         _currentVideoFrame;
     
-    /** Control when to decode **/
+    /** 控制何时该解码 **/
     BOOL                                                _buffered;
     CGFloat                                             _bufferedDuration;
     CGFloat                                             _minBufferedDuration;
@@ -71,10 +72,9 @@ NSString * const kMAX_BUFFERED_DURATION = @"Max_Buffered_Duration";
 
 @end
 
-
 @implementation AVSynchronizer
 
-static BOOL isNetworkPath(NSString *path)
+static BOOL isNetworkPath (NSString *path)
 {
     NSRange r = [path rangeOfString:@":"];
     if (r.location == NSNotFound)
@@ -92,20 +92,20 @@ static void* runDecoderThread(void* ptr)
     return NULL;
 }
 
-- (BOOL)isPlayCompleted
+- (BOOL) isPlayCompleted;
 {
     return _completion;
 }
 
-- (void)run
+- (void) run
 {
     while(isOnDecoding){
         pthread_mutex_lock(&videoDecoderLock);
-        NSLog(@"Before wait First decode Buffer...");
+        //        NSLog(@"Before wait First decode Buffer...");
         pthread_cond_wait(&videoDecoderCondition, &videoDecoderLock);
-        NSLog(@"After wait First decode Buffer...");
+        //        NSLog(@"After wait First decode Buffer...");
         pthread_mutex_unlock(&videoDecoderLock);
-        NSLog(@"after pthread_cond_wait");
+        //            LOGI("after pthread_cond_wait");
         [self decodeFrames];
     }
 }
@@ -117,7 +117,7 @@ static void* decodeFirstBufferRunLoop(void* ptr)
     return NULL;
 }
 
-- (void)decodeFirstBuffer
+- (void) decodeFirstBuffer
 {
     double startDecodeFirstBufferTimeMills = CFAbsoluteTimeGetCurrent() * 1000;
     [self decodeFramesWithDuration:FIRST_BUFFER_DURATION];
@@ -129,7 +129,7 @@ static void* decodeFirstBufferRunLoop(void* ptr)
     isDecodingFirstBuffer = false;
 }
 
-- (void)decodeFramesWithDuration:(CGFloat) duration;
+- (void) decodeFramesWithDuration:(CGFloat) duration;
 {
     BOOL good = YES;
     while (good) {
@@ -146,7 +146,7 @@ static void* decodeFirstBufferRunLoop(void* ptr)
     }
 }
 
-- (void)decodeFrames
+- (void) decodeFrames
 {
     const CGFloat duration = 0.0f;
     BOOL good = YES;
@@ -163,7 +163,7 @@ static void* decodeFirstBufferRunLoop(void* ptr)
     }
 }
 
-- (id)initWithPlayerStateDelegate:(id<PlayerStateDelegate>) playerStateDelegate
+- (id) initWithPlayerStateDelegate:(id<PlayerStateDelegate>) playerStateDelegate
 {
     self = [super init];
     if (self) {
@@ -474,7 +474,7 @@ float lastPosition = -1.0;
     if (_decoder.validVideo) {
         @synchronized(_videoFrames) {
             for (BaseFrame *frame in frames)
-                if (*(frame.type) == VideoFrameType) {
+                if (frame.type == VideoFrameType) {
                     [_videoFrames addObject:frame];
                 }
         }
@@ -639,5 +639,4 @@ float lastPosition = -1.0;
 {
     NSLog(@"AVSynchronizer Dealloc...");
 }
-
 @end

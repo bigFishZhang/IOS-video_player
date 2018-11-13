@@ -19,8 +19,7 @@ NSString *const contrastVertexShaderString = SHADER_STRING
      gl_Position = position;
      v_texcoord = texcoord;
  }
-);
-
+ );
 
 NSString *const contrastFragmentShaderString = SHADER_STRING
 (
@@ -33,8 +32,7 @@ NSString *const contrastFragmentShaderString = SHADER_STRING
      lowp vec4 textureColor = texture2D(inputImageTexture, v_texcoord);
      gl_FragColor = vec4((textureColor.rgb-0.36*(textureColor.rgb-vec3(0.63))*(textureColor.rgb-vec3(0.63))), textureColor.w);
  }
- 
-);
+ );
 
 @interface ContrastEnhancerFilter()
 {
@@ -46,7 +44,7 @@ NSString *const contrastFragmentShaderString = SHADER_STRING
 
 @implementation ContrastEnhancerFilter
 
-- (BOOL)prepareRender:(NSInteger) frameWidth height:(NSInteger) frameHeight;
+- (BOOL) prepareRender:(NSInteger) frameWidth height:(NSInteger) frameHeight;
 {
     BOOL ret = NO;
     if([self buildProgram:contrastVertexShaderString fragmentShader:contrastFragmentShaderString]) {

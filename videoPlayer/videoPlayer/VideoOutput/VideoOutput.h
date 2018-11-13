@@ -6,28 +6,26 @@
 //  Copyright © 2018 bigfish. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "VideoDecoder.h"
 #import "BaseEffectFilter.h"
 
 @interface VideoOutput : UIView
 
-- (id)initWithFrame:(CGRect)frame
-       textureWidth:(NSInteger)textureWidth
-      textureHeight:(NSInteger)textureHeight;
+- (id) initWithFrame:(CGRect)frame textureWidth:(NSInteger)textureWidth textureHeight:(NSInteger)textureHeight;
+- (id) initWithFrame:(CGRect)frame
+        textureWidth:(NSInteger)textureWidth
+       textureHeight:(NSInteger)textureHeight
+          shareGroup:(EAGLSharegroup *)shareGroup;
 
-- (id)initWithFrame:(CGRect)frame
-       textureWidth:(NSInteger)textureWidth
-      textureHeight:(NSInteger)textureHeight
-         shareGroup:(EAGLSharegroup *)shareGroup;
+- (void) presentVideoFrame:(VideoFrame*) frame;
 
-- (void)presentVideoFrame:(VideoFrame *)frame;
+- (BaseEffectFilter*) createImageProcessFilterInstance;
+- (BaseEffectFilter*) getImageProcessFilterInstance;
 
-- (BaseEffectFilter *) createImageProcessFilterInstance;
-- (BaseEffectFilter *) getImageProcessFilterInstance;
-
-- (void)destroy;
+- (void) destroy;
 
 @end
+
 

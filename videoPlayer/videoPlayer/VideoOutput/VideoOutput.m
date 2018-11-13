@@ -8,25 +8,27 @@
 
 #import "VideoOutput.h"
 #import <OpenGLES/ES2/gl.h>
-#import <OpenGLES//ES2/glext.h>
+#import <OpenGLES/ES2/glext.h>
 #import "YUVFrameCopier.h"
 #import "ContrastEnhancerFilter.h"
 #import "DirectPassRenderer.h"
+#import <Foundation/Foundation.h>
 
 /**
- *  Responsibilities of this category:
- *  1:As a subclass of UIView, you must provide layer rendering, which is done here by binding RenderBuffer to our CAEAGLLayer
- *  2:Need to build OpenGL environment, EAGLContext and run Thread
- *  3:Call the third-party Filter and Renderer to process and render YUV420P data to the RenderBuffer
- *  4:Because it involves the operation of the OpenGL, to increase the NotificationCenter listening, in applicationWillResignActive stop drawing
+ * 本类的职责:
+ *  1:作为一个UIView的子类, 必须提供layer的绘制, 我们这里是靠RenderBuffer和我们的CAEAGLLayer进行绑定来绘制的
+ *  2:需要构建OpenGL的环境, EAGLContext与运行Thread
+ *  3:调用第三方的Filter与Renderer去把YUV420P的数据处理以及渲染到RenderBuffer上
+ *  4:由于这里面涉及到OpenGL的操作, 要增加NotificationCenter的监听, 在applicationWillResignActive 停止绘制
  *
  */
+
 @interface VideoOutput()
 
 @property (atomic) BOOL readyToRender;
-@property (nonatomic,assign) BOOL shouldEnableOpenGL;
-@property (nonatomic,strong) NSLock *shouldEnableOpenGLLock;
-@property (nonatomic,strong) NSOperationQueue *renderOperationQueue;
+@property (nonatomic, assign) BOOL shouldEnableOpenGL;
+@property (nonatomic, strong) NSLock *shouldEnableOpenGLLock;
+@property (nonatomic, strong) NSOperationQueue *renderOperationQueue;
 
 @end
 
@@ -45,26 +47,18 @@
     BaseEffectFilter*                       _filter;
     
     DirectPassRenderer*                     _directPassRenderer;
-    
-    
 }
 
-+ (Class)layerClass
++ (Class) layerClass
 {
     return [CAEAGLLayer class];
 }
 
-- (id)initWithFrame:(CGRect)frame
-      textureWidth:(NSInteger)textureWidth
-     textureHeight:(NSInteger)textureHeight
-{
+- (id) initWithFrame:(CGRect)frame textureWidth:(NSInteger)textureWidth textureHeight:(NSInteger)textureHeight {
     return [self initWithFrame:frame textureWidth:textureWidth textureHeight:textureHeight shareGroup:nil];
 }
 
-- (id)initWithFrame:(CGRect)frame
-       textureWidth:(NSInteger)textureWidth
-      textureHeight:(NSInteger)textureHeight
-         shareGroup:(EAGLSharegroup *)shareGroup
+- (id) initWithFrame:(CGRect)frame textureWidth:(NSInteger)textureWidth textureHeight:(NSInteger)textureHeight  shareGroup:(EAGLSharegroup *)shareGroup
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -129,29 +123,29 @@
     return self;
 }
 
-- (BaseEffectFilter*)createImageProcessFilterInstance
+- (BaseEffectFilter*) createImageProcessFilterInstance
 {
     return [[ContrastEnhancerFilter alloc] init];
 }
 
-
-- (BaseEffectFilter *)getImageProcessFilterInstance
+- (BaseEffectFilter*) getImageProcessFilterInstance
 {
     return _filter;
 }
 
-- (void)createCopierInstance
+- (void) createCopierInstance
 {
     _videoFrameCopier = [[YUVFrameCopier alloc] init];
 }
 
-//The maximum number of frames allowed in the current operationQueue is theoretically no more than one frame on a good model, and the less advanced models (like the iPod touch) are slower to render
-
-//There may be multiple frames in the queue. In this case, if there are more than three frames, remove the previous frames except the last three (corresponding operation cancel).
 static int count = 0;
+//static int totalDroppedFrames = 0;
+
+//当前operationQueue里允许最多的帧数，理论上好的机型上不会有超过1帧的情况，差一些的机型（比如iPod touch），渲染的比较慢，
+//队列里可能会有多帧的情况，这种情况下，如果有超过三帧，就把除了最近3帧以前的帧移除掉（对应的operation cancel掉）
 static const NSInteger kMaxOperationQueueCount = 3;
 
-- (void)presentVideoFrame:(VideoFrame *)frame
+- (void) presentVideoFrame:(VideoFrame*) frame;
 {
     if(_stopping){
         NSLog(@"Prevent A InValid Renderer >>>>>>>>>>>>>>>>>");
@@ -200,11 +194,12 @@ static const NSInteger kMaxOperationQueueCount = 3;
             [strongSelf->_context presentRenderbuffer:GL_RENDERBUFFER];
         }];
     }
+    
 }
 
-- (BOOL)createDisplayFramebuffer
+- (BOOL) createDisplayFramebuffer;
 {
-    BOOL re = TRUE;
+    BOOL ret = TRUE;
     glGenFramebuffers(1, &_displayFramebuffer);
     glGenRenderbuffers(1, &_renderbuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, _displayFramebuffer);
@@ -213,20 +208,22 @@ static const NSInteger kMaxOperationQueueCount = 3;
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderbuffer);
+    
     GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
     if (status != GL_FRAMEBUFFER_COMPLETE) {
         NSLog(@"failed to make complete framebuffer object %x", status);
         return FALSE;
     }
+    
     GLenum glError = glGetError();
     if (GL_NO_ERROR != glError) {
         NSLog(@"failed to setup GL %x", glError);
         return FALSE;
     }
-    return re;
+    return ret;
 }
 
-- (void)destroy
+- (void) destroy;
 {
     _stopping = true;
     
@@ -257,10 +254,7 @@ static const NSInteger kMaxOperationQueueCount = 3;
             [EAGLContext setCurrentContext:nil];
         }
     }];
-    
-    
 }
-
 
 - (void)dealloc
 {
@@ -290,5 +284,4 @@ static const NSInteger kMaxOperationQueueCount = 3;
     self.shouldEnableOpenGL = YES;
     [self.shouldEnableOpenGLLock unlock];
 }
-
 @end

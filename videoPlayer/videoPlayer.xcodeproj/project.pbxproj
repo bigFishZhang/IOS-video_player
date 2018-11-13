@@ -33,6 +33,8 @@
 		FF6CD9CB219A7AF80089A198 /* ELVideoViewPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9C9219A7AF80089A198 /* ELVideoViewPlayerController.m */; };
 		FF6CD9CE219A7B1A0089A198 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9CD219A7B1A0089A198 /* LoadingView.m */; };
 		FF6CD9CF219A7B1A0089A198 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9CD219A7B1A0089A198 /* LoadingView.m */; };
+		FF6CD9D1219AB28E0089A198 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF6CD9D0219AB28E0089A198 /* ViewController.xib */; };
+		FF6CD9D2219AB28E0089A198 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF6CD9D0219AB28E0089A198 /* ViewController.xib */; };
 		FF7F0434218D3A0D000BFA74 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F0433218D3A0D000BFA74 /* AppDelegate.m */; };
 		FF7F0437218D3A0D000BFA74 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F0436218D3A0D000BFA74 /* ViewController.m */; };
 		FF7F043A218D3A0D000BFA74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7F0438218D3A0D000BFA74 /* Main.storyboard */; };
@@ -106,6 +108,7 @@
 		FF6CD9C9219A7AF80089A198 /* ELVideoViewPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELVideoViewPlayerController.m; sourceTree = "<group>"; };
 		FF6CD9CC219A7B1A0089A198 /* LoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		FF6CD9CD219A7B1A0089A198 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		FF6CD9D0219AB28E0089A198 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		FF7F042F218D3A0D000BFA74 /* videoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = videoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7F0432218D3A0D000BFA74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF7F0433218D3A0D000BFA74 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -415,6 +418,7 @@
 				FF7F043D218D3A0E000BFA74 /* LaunchScreen.storyboard */,
 				FF7F0440218D3A0E000BFA74 /* Info.plist */,
 				FF7F0441218D3A0E000BFA74 /* main.m */,
+				FF6CD9D0219AB28E0089A198 /* ViewController.xib */,
 			);
 			path = videoPlayer;
 			sourceTree = "<group>";
@@ -739,6 +743,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6CD9D1219AB28E0089A198 /* ViewController.xib in Resources */,
 				FF7F043F218D3A0E000BFA74 /* LaunchScreen.storyboard in Resources */,
 				FF7F043C218D3A0E000BFA74 /* Assets.xcassets in Resources */,
 				FF7F04F9218D4481000BFA74 /* test.flv in Resources */,
@@ -750,6 +755,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6CD9D2219AB28E0089A198 /* ViewController.xib in Resources */,
 				FF7F04FA218D4481000BFA74 /* test.flv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

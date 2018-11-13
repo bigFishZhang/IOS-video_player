@@ -10,20 +10,17 @@
 
 @implementation BaseEffectFilter
 
--(BOOL)prepareRender:(NSInteger)frameWidth height:(NSInteger)frameHeight
+- (BOOL) prepareRender:(NSInteger) frameWidth height:(NSInteger) frameHeight;
 {
     return NO;
 }
 
 //template method
--(void)renderWithWidth:(NSInteger)width height:(NSInteger)height position:(float)position
-{
-    
+- (void) renderWithWidth:(NSInteger) width height:(NSInteger) height position:(float)position {
     
 }
 
-
-- (BOOL)buildProgram:(NSString *)vertexShader fragmentShader:(NSString *)fragmentShader
+- (BOOL) buildProgram:(NSString*) vertexShader fragmentShader:(NSString*) fragmentShader;
 {
     BOOL result = NO;
     GLuint vertShader = 0, fragShader = 0;
@@ -66,8 +63,7 @@ exit:
     return result;
 }
 
-
-- (void)releaseRender
+- (void) releaseRender;
 {
     if (filterProgram) {
         glDeleteProgram(filterProgram);
@@ -75,14 +71,14 @@ exit:
     }
 }
 
-- (void)setInputTexture:(GLint)textureId
+- (void) setInputTexture:(GLint) textureId;
 {
     _inputTexId = textureId;
 }
 
-- (GLint)outputTextureID
+- (GLint) outputTextureID
 {
-    return  -1;
+    return -1;
 }
 
 @end

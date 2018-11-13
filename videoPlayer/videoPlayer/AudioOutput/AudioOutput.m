@@ -32,6 +32,7 @@
 #import "ELAudioSession.h"
 
 static const AudioUnitElement inputElement = 1;
+//static const AudioUnitElement outputElement = 0;
 
 static OSStatus InputRenderCallback(void *inRefCon,
                                     AudioUnitRenderActionFlags *ioActionFlags,
@@ -39,8 +40,8 @@ static OSStatus InputRenderCallback(void *inRefCon,
                                     UInt32 inBusNumber,
                                     UInt32 inNumberFrames,
                                     AudioBufferList *ioData);
-
 static void CheckStatus(OSStatus status, NSString *message, BOOL fatal);
+
 
 @interface AudioOutput(){
     SInt16*                      _outData;
@@ -52,18 +53,16 @@ static void CheckStatus(OSStatus status, NSString *message, BOOL fatal);
 @property(nonatomic, assign) AUNode             convertNode;
 @property(nonatomic, assign) AudioUnit          convertUnit;
 
-@property(readwrite, copy) id<FillDataDelegate> fillAudioDataDelegate;
+@property (readwrite, copy) id<FillDataDelegate> fillAudioDataDelegate;
 
 @end
-
-//const float SMAudioIOBufferDurationSmall = 0.0058f;
 
 @implementation AudioOutput
 
 - (id) initWithChannels:(NSInteger) channels
              sampleRate:(NSInteger) sampleRate
          bytesPerSample:(NSInteger) bytePerSample
-      fillDataDelegate:(id<FillDataDelegate>) fillAudioDataDelegate;
+      filleDataDelegate:(id<FillDataDelegate>) fillAudioDataDelegate;
 {
     
     self = [super init];

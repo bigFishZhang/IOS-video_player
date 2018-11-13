@@ -13,14 +13,15 @@
 
 @interface VideoPlayerViewController : UIViewController
 
-@property(nonatomic,retain)AVSynchronizer *synchronizer;
-@property(nonatomic,retain)NSString       *videoFilePath;
-@property(nonatomic,weak) id<PlayerStateDelegate>playerStateDelegate;
+@property(nonatomic, retain) AVSynchronizer*                synchronizer;
+@property(nonatomic, retain) NSString*                      videoFilePath;
+@property(nonatomic, weak) id<PlayerStateDelegate>          playerStateDelegate;
+
 
 + (instancetype)viewControllerWithContentPath:(NSString *)path
                                  contentFrame:(CGRect)frame
-                          playerStateDelegate:(id)playerStateDelegate
-                                   parameters:(NSDictionary *)parameters;
+                          playerStateDelegate:(id) playerStateDelegate
+                                   parameters: (NSDictionary *)parameters;
 
 + (instancetype)viewControllerWithContentPath:(NSString *)path
                                  contentFrame:(CGRect)frame
@@ -28,12 +29,12 @@
                                    parameters: (NSDictionary *)parameters
                   outputEAGLContextShareGroup:(EAGLSharegroup *)sharegroup;
 
-- (instancetype)initWithContentPath:(NSString *)path
+- (instancetype) initWithContentPath:(NSString *)path
                         contentFrame:(CGRect)frame
                  playerStateDelegate:(id) playerStateDelegate
                           parameters:(NSDictionary *)parameters;
 
-- (instancetype)initWithContentPath:(NSString *)path
+- (instancetype) initWithContentPath:(NSString *)path
                         contentFrame:(CGRect)frame
                  playerStateDelegate:(id) playerStateDelegate
                           parameters:(NSDictionary *)parameters
@@ -45,15 +46,13 @@
 
 - (void)stop;
 
-- (void)restart;
+- (void) restart;
 
-- (BOOL)isPlaying;
+- (BOOL) isPlaying;
 
 - (UIImage *)movieSnapshot;
 
-- (VideoOutput*)createVideoOutputInstance;
-- (VideoOutput*)getVideoOutputInstance;
-
-
+- (VideoOutput*) createVideoOutputInstance;
+- (VideoOutput*) getVideoOutputInstance;
 @end
 

@@ -10,7 +10,6 @@
 #import "VideoPlayerViewController.h"
 #import "LoadingView.h"
 
-
 @interface ELVideoViewPlayerController() <PlayerStateDelegate>
 {
     VideoPlayerViewController*              _playerViewController;

@@ -20,7 +20,7 @@ NSString *const yuvVertexShaderString = SHADER_STRING
      gl_Position = modelViewProjectionMatrix * position;
      v_texcoord = texcoord.xy;
  }
-);
+ );
 
 NSString *const yuvFragmentShaderString = SHADER_STRING
 (
@@ -41,7 +41,7 @@ NSString *const yuvFragmentShaderString = SHADER_STRING
      
      gl_FragColor = vec4(r,g,b,1.0);
  }
-);
+ );
 
 @interface YUVFrameCopier(){
     GLuint                              _framebuffer;
@@ -55,10 +55,7 @@ NSString *const yuvFragmentShaderString = SHADER_STRING
     GLuint                              _inputTextures[3];
 }
 
-
 @end
-
-
 
 @implementation YUVFrameCopier
 
@@ -72,7 +69,7 @@ NSString *const yuvFragmentShaderString = SHADER_STRING
         glUseProgram(filterProgram);
         glEnableVertexAttribArray(filterPositionAttribute);
         glEnableVertexAttribArray(filterTextureCoordinateAttribute);
-        //FBO And TextureId
+        //生成FBO And TextureId
         glGenFramebuffers(1, &_framebuffer);
         glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
         
@@ -195,7 +192,5 @@ NSString *const yuvFragmentShaderString = SHADER_STRING
                      0, GL_LUMINANCE, GL_UNSIGNED_BYTE, pixels[i]);
     }
 }
-
-
 
 @end

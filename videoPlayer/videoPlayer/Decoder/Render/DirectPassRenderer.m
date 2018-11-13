@@ -10,17 +10,17 @@
 
 NSString *const kDirectPassVertexShaderString = SHADER_STRING
 (
-    attribute vec4 position;
-    attribute vec2 texcoord;
+ attribute vec4 position;
+ attribute vec2 texcoord;
  
-    varying vec2 textureCoordinate;
+ varying vec2 textureCoordinate;
  
-    void mian()
-    {
-        gl_Position = position;
-        textureCoordinate = texcoord;
-    }
-);
+ void main()
+ {
+     gl_Position = position;
+     textureCoordinate = texcoord;
+ }
+ );
 
 NSString *const kDirectPassFragmentShaderString = SHADER_STRING
 (
@@ -32,27 +32,24 @@ NSString *const kDirectPassFragmentShaderString = SHADER_STRING
  {
      gl_FragColor = texture2D(inputImageTexture, textureCoordinate);
  }
-
-);
+ );
 
 @implementation DirectPassRenderer
 
-- (BOOL)prepareRender:(NSInteger)frameWidth height:(NSInteger)frameHeight;
+
+- (BOOL) prepareRender:(NSInteger) frameWidth height:(NSInteger) frameHeight;
 {
-    BOOL re = NO;
-    if([self buildProgram:kDirectPassVertexShaderString fragmentShader:kDirectPassFragmentShaderString])
-    {
+    BOOL ret = NO;
+    if([self buildProgram:kDirectPassVertexShaderString fragmentShader:kDirectPassFragmentShaderString]) {
         glUseProgram(filterProgram);
         glEnableVertexAttribArray(filterPositionAttribute);
         glEnableVertexAttribArray(filterTextureCoordinateAttribute);
-        re = TRUE;
+        ret = TRUE;
     }
-    return re;
+    return ret;
 }
 
-- (void)renderWithWidth:(NSInteger)width
-                 height:(NSInteger)height
-               position:(float)position
+- (void) renderWithWidth:(NSInteger) width height:(NSInteger) height position:(float)position
 {
     glUseProgram(filterProgram);
     glViewport(0, 0, (int)width, (int)height);
@@ -60,7 +57,7 @@ NSString *const kDirectPassFragmentShaderString = SHADER_STRING
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glActiveTexture(GL_TEXTURE0);
-    glBindBuffer(GL_TEXTURE_2D, _inputTexId);
+    glBindTexture(GL_TEXTURE_2D, _inputTexId);
     glUniform1i(filterInputTextureUniform, 0);
     
     static const GLfloat imageVertices[] = {
@@ -79,13 +76,10 @@ NSString *const kDirectPassFragmentShaderString = SHADER_STRING
     
     glVertexAttribPointer(filterPositionAttribute, 2, GL_FLOAT, 0, 0, imageVertices);
     glEnableVertexAttribArray(filterPositionAttribute);
-    
     glVertexAttribPointer(filterTextureCoordinateAttribute, 2, GL_FLOAT, 0, 0, noRotationTextureCoordinates);
     glEnableVertexAttribArray(filterTextureCoordinateAttribute);
     
-    
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    
 }
 
 @end
