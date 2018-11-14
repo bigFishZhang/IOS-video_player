@@ -188,10 +188,10 @@ static const NSInteger kMaxOperationQueueCount = 3;
             int frameHeight = (int)[frame height];
             [EAGLContext setCurrentContext:strongSelf->_context];
             [strongSelf->_videoFrameCopier renderWithTexId:frame];
-            [strongSelf->_filter renderWithWidth:frameWidth height:frameHeight position:*(frame.position)];
+            [strongSelf->_filter renderWithWidth:frameWidth height:frameHeight position:frame.position];
             
             glBindFramebuffer(GL_FRAMEBUFFER, strongSelf->_displayFramebuffer);
-            [strongSelf->_directPassRenderer renderWithWidth:strongSelf->_backingWidth height:strongSelf->_backingHeight position:*(frame.position)];
+            [strongSelf->_directPassRenderer renderWithWidth:strongSelf->_backingWidth height:strongSelf->_backingHeight position:frame.position];
             glBindRenderbuffer(GL_RENDERBUFFER, strongSelf->_renderbuffer);
             [strongSelf->_context presentRenderbuffer:GL_RENDERBUFFER];
         }];

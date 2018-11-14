@@ -294,7 +294,7 @@ float lastPosition = -1.0;
     @synchronized(_videoFrames) {
         while (_videoFrames.count > 0) {
             frame = _videoFrames[0];
-            const CGFloat delta = _audioPosition - *(frame.position);
+            const CGFloat delta = _audioPosition - frame.position;
             if (delta < (0 - _syncMaxTimeDiff)) {
                                 NSLog(@"视频比音频快了好多,我们还是渲染上一帧");
                 frame = NULL;
@@ -302,7 +302,7 @@ float lastPosition = -1.0;
             }
             [_videoFrames removeObjectAtIndex:0];
             if (delta > _syncMaxTimeDiff) {
-                                NSLog(@"视频比音频慢了好多,我们需要继续从queue拿到合适的帧 _audioPosition is %.3f frame.position %.3f", _audioPosition, *(frame.position));
+                                NSLog(@"视频比音频慢了好多,我们需要继续从queue拿到合适的帧 _audioPosition is %.3f frame.position %.3f", _audioPosition, frame.position);
                 frame = NULL;
                 continue;
             } else {
@@ -327,9 +327,9 @@ float lastPosition = -1.0;
     //        NSLog(@"audio played position is %.3f _currentVideoFrame position is %.3f", _audioPosition, _currentVideoFrame.position);
     //    }
     
-    if(fabs(*(_currentVideoFrame.position) - lastPosition) > 0.01f){
+    if(fabs(_currentVideoFrame.position - lastPosition) > 0.01f){
         //        NSLog(@"lastPosition is %.3f _currentVideoFrame position is %.3f", lastPosition, _currentVideoFrame.position);
-        lastPosition = *(_currentVideoFrame.position);
+        lastPosition = _currentVideoFrame.position;
         count++;
         return _currentVideoFrame;
     } else {
@@ -355,10 +355,10 @@ float lastPosition = -1.0;
                     NSUInteger count = _audioFrames.count;
                     if (count > 0) {
                         AudioFrame *frame = _audioFrames[0];
-                        _bufferedDuration -= *(frame.duration);
+                        _bufferedDuration -= frame.duration;
                         
                         [_audioFrames removeObjectAtIndex:0];
-                        _audioPosition = *(frame.position);
+                        _audioPosition = frame.position;
                         
                         _currentAudioFramePos = 0;
                         _currentAudioFrame = frame.samples;
@@ -485,7 +485,7 @@ float lastPosition = -1.0;
             for (BaseFrame *frame in frames)
                 if (frame.type == AudioFrameType) {
                     [_audioFrames addObject:frame];
-                    _bufferedDuration += *(frame.duration);
+                    _bufferedDuration += frame.duration;
                 }
         }
     }

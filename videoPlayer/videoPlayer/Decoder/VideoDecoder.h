@@ -49,9 +49,9 @@ typedef enum {
 //FrameType
 @property (nonatomic,readwrite) FrameType type;
 //position
-@property (nonatomic,readwrite) CGFloat *position;
+@property (nonatomic,readwrite) CGFloat position;
 //duration
-@property (nonatomic,readwrite) CGFloat *duration;
+@property (nonatomic,readwrite) CGFloat duration;
 
 @end
 

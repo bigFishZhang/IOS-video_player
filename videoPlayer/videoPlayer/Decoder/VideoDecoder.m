@@ -401,10 +401,10 @@ static int interrupt_callback(void *ctx)
         
         if(packet.flags == 1){
             //IDR Frame
-            NSLog(@"IDR Frame %f", *(frame.position));
+            NSLog(@"IDR Frame %f", frame.position);
         } else if (packet.flags == 0) {
             //NON-IDR Frame
-            NSLog(@"===========NON-IDR Frame=========== %f", *(frame.position));
+            NSLog(@"===========NON-IDR Frame=========== %f", frame.position);
         }
         if (0 == len)
             break;
@@ -436,7 +436,7 @@ static int interrupt_callback(void *ctx)
             if(frame){
                 totalVideoFramecount++;
                 [result addObject:frame];
-                decodedDuration += *(frame.duration);
+                decodedDuration += frame.duration;
                 if (decodedDuration > minDuration)
                     finished = YES;
             }
@@ -456,8 +456,8 @@ static int interrupt_callback(void *ctx)
                     if (frame) {
                         [result addObject:frame];
                         if (_videoStreamIndex == -1) {
-                            _decodePosition = *(frame.position);
-                            decodedDuration += *(frame.duration);
+                            _decodePosition = frame.position;
+                            decodedDuration += frame.duration;
                             if (decodedDuration > minDuration)
                                 finished = YES;
                         }
@@ -537,19 +537,20 @@ static int interrupt_callback(void *ctx)
     frame.type = VideoFrameType;
     int64_t a = av_frame_get_best_effort_timestamp(_videoFrame);
     CGFloat effort = a * _videoTimeBase;
-    frame.position = &effort;
+    frame.position = effort;
     const int64_t frameDuration = av_frame_get_pkt_duration(_videoFrame);
     if (frameDuration) {
         CGFloat d = frameDuration * _videoTimeBase;
-        frame.duration = &d;
+        frame.duration = d;
         
         CGFloat t = _videoFrame->repeat_pict * _videoTimeBase * 0.5;
-        *(frame.duration) += t;
+        frame.duration += t;
+//        frame.duration  = &(*(frame.duration) + t);
     } else {
         // sometimes, ffmpeg unable to determine a frame duration
         // as example yuvj420p stream from web camera
         CGFloat fps = 1.0 / _fps;
-        frame.duration = &fps;
+        frame.duration = fps;
     }
     //    if(totalVideoFramecount == 30){
     //        //软件解码的第31帧写入文件
@@ -614,10 +615,10 @@ static int interrupt_callback(void *ctx)
     AudioFrame *frame = [[AudioFrame alloc] init];
     int64_t t = av_frame_get_best_effort_timestamp(_audioFrame);
     CGFloat effort = t * _videoTimeBase;
-    frame.position = &effort;
+    frame.position = effort;
     int64_t f = av_frame_get_pkt_duration(_audioFrame);
     CGFloat d =  f * _audioTimeBase;
-    frame.duration = &d;
+    frame.duration = d;
     frame.samples = pcmData;
 //    FrameType type = AudioFrameType;
     frame.type = AudioFrameType;
