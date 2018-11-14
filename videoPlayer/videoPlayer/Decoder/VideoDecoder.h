@@ -47,7 +47,7 @@ typedef enum {
 
 @interface BaseFrame : NSObject
 //FrameType
-@property (nonatomic,readwrite) FrameType *type;
+@property (nonatomic,readwrite) FrameType type;
 //position
 @property (nonatomic,readwrite) CGFloat *position;
 //duration

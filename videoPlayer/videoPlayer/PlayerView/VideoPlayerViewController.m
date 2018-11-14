@@ -88,8 +88,8 @@
 {
     _synchronizer = [[AVSynchronizer alloc] initWithPlayerStateDelegate:_playerStateDelegate];
     __weak VideoPlayerViewController *weakSelf = self;
-    BOOL isIOS8OrUpper = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0);
-    dispatch_async(dispatch_get_global_queue(isIOS8OrUpper ? QOS_CLASS_USER_INTERACTIVE:DISPATCH_QUEUE_PRIORITY_HIGH, 0) , ^{
+//    BOOL isIOS8OrUpper = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0);
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0) , ^{
         __strong VideoPlayerViewController *strongSelf = weakSelf;
         if (strongSelf) {
             NSError *error = nil;
@@ -129,6 +129,8 @@
 
 - (VideoOutput*) createVideoOutputInstance;
 {
+    
+    
     CGRect bounds = self.view.bounds;
     NSInteger textureWidth = [_synchronizer getVideoFrameWidth];
     NSInteger textureHeight = [_synchronizer getVideoFrameHeight];

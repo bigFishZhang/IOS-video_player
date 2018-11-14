@@ -35,6 +35,8 @@
 		FF6CD9CF219A7B1A0089A198 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6CD9CD219A7B1A0089A198 /* LoadingView.m */; };
 		FF6CD9D1219AB28E0089A198 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF6CD9D0219AB28E0089A198 /* ViewController.xib */; };
 		FF6CD9D2219AB28E0089A198 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF6CD9D0219AB28E0089A198 /* ViewController.xib */; };
+		FF6CD9D4219AB6500089A198 /* test.flv in Resources */ = {isa = PBXBuildFile; fileRef = FF6CD9D3219AB6500089A198 /* test.flv */; };
+		FF6CD9D5219AB6500089A198 /* test.flv in Resources */ = {isa = PBXBuildFile; fileRef = FF6CD9D3219AB6500089A198 /* test.flv */; };
 		FF7F0434218D3A0D000BFA74 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F0433218D3A0D000BFA74 /* AppDelegate.m */; };
 		FF7F0437218D3A0D000BFA74 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7F0436218D3A0D000BFA74 /* ViewController.m */; };
 		FF7F043A218D3A0D000BFA74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF7F0438218D3A0D000BFA74 /* Main.storyboard */; };
@@ -65,8 +67,6 @@
 		FF7F04F2218D41D7000BFA74 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7F04F1218D41D7000BFA74 /* AudioToolbox.framework */; };
 		FF7F04F4218D41DC000BFA74 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7F04F3218D41DC000BFA74 /* AVFoundation.framework */; };
 		FF7F04F6218D41E2000BFA74 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF7F04F5218D41E2000BFA74 /* CoreVideo.framework */; };
-		FF7F04F9218D4481000BFA74 /* test.flv in Resources */ = {isa = PBXBuildFile; fileRef = FF7F04F8218D4481000BFA74 /* test.flv */; };
-		FF7F04FA218D4481000BFA74 /* test.flv in Resources */ = {isa = PBXBuildFile; fileRef = FF7F04F8218D4481000BFA74 /* test.flv */; };
 		FFB93300218FDAB700CD2100 /* VideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB932FF218FDAB700CD2100 /* VideoDecoder.m */; };
 		FFB93301218FDAB700CD2100 /* VideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB932FF218FDAB700CD2100 /* VideoDecoder.m */; };
 /* End PBXBuildFile section */
@@ -109,6 +109,7 @@
 		FF6CD9CC219A7B1A0089A198 /* LoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		FF6CD9CD219A7B1A0089A198 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		FF6CD9D0219AB28E0089A198 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		FF6CD9D3219AB6500089A198 /* test.flv */ = {isa = PBXFileReference; lastKnownFileType = file; name = test.flv; path = videoPlayer/test.flv; sourceTree = SOURCE_ROOT; };
 		FF7F042F218D3A0D000BFA74 /* videoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = videoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7F0432218D3A0D000BFA74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF7F0433218D3A0D000BFA74 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -249,7 +250,6 @@
 		FF7F04F1218D41D7000BFA74 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FF7F04F3218D41DC000BFA74 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FF7F04F5218D41E2000BFA74 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		FF7F04F8218D4481000BFA74 /* test.flv */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.flv; sourceTree = "<group>"; };
 		FFB932FE218FDAB700CD2100 /* VideoDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoDecoder.h; sourceTree = "<group>"; };
 		FFB932FF218FDAB700CD2100 /* VideoDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoDecoder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -648,7 +648,7 @@
 		FF7F04F7218D4453000BFA74 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				FF7F04F8218D4481000BFA74 /* test.flv */,
+				FF6CD9D3219AB6500089A198 /* test.flv */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -746,7 +746,7 @@
 				FF6CD9D1219AB28E0089A198 /* ViewController.xib in Resources */,
 				FF7F043F218D3A0E000BFA74 /* LaunchScreen.storyboard in Resources */,
 				FF7F043C218D3A0E000BFA74 /* Assets.xcassets in Resources */,
-				FF7F04F9218D4481000BFA74 /* test.flv in Resources */,
+				FF6CD9D4219AB6500089A198 /* test.flv in Resources */,
 				FF7F043A218D3A0D000BFA74 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,8 +755,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6CD9D5219AB6500089A198 /* test.flv in Resources */,
 				FF6CD9D2219AB28E0089A198 /* ViewController.xib in Resources */,
-				FF7F04FA218D4481000BFA74 /* test.flv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,7 +845,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -876,7 +876,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -904,7 +904,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -935,7 +935,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -955,9 +955,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 882QX692N8;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/videoPlayer/FFmpeg402/include";
 				INFOPLIST_FILE = videoPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -980,9 +982,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 882QX692N8;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/videoPlayer/FFmpeg402/include";
 				INFOPLIST_FILE = videoPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

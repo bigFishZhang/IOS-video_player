@@ -296,13 +296,13 @@ float lastPosition = -1.0;
             frame = _videoFrames[0];
             const CGFloat delta = _audioPosition - *(frame.position);
             if (delta < (0 - _syncMaxTimeDiff)) {
-                //                NSLog(@"视频比音频快了好多,我们还是渲染上一帧");
+                                NSLog(@"视频比音频快了好多,我们还是渲染上一帧");
                 frame = NULL;
                 break;
             }
             [_videoFrames removeObjectAtIndex:0];
             if (delta > _syncMaxTimeDiff) {
-                //                NSLog(@"视频比音频慢了好多,我们需要继续从queue拿到合适的帧 _audioPosition is %.3f frame.position %.3f", _audioPosition, frame.position);
+                                NSLog(@"视频比音频慢了好多,我们需要继续从queue拿到合适的帧 _audioPosition is %.3f frame.position %.3f", _audioPosition, *(frame.position));
                 frame = NULL;
                 continue;
             } else {

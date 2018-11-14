@@ -60,6 +60,8 @@
 
 - (id) initWithFrame:(CGRect)frame textureWidth:(NSInteger)textureWidth textureHeight:(NSInteger)textureHeight  shareGroup:(EAGLSharegroup *)shareGroup
 {
+    
+    
     self = [super initWithFrame:frame];
     if (self) {
         _shouldEnableOpenGLLock = [NSLock new];
